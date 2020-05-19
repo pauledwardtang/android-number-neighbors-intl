@@ -11,11 +11,14 @@ class MainActivityViewModelFactory(val context: Context) : ViewModelProvider.Fac
   override fun <T : ViewModel?> create(modelClass: Class<T>): T {
     require(modelClass.isAssignableFrom(MainActivityViewModel::class.java))
 
-    val retrofit = (context.applicationContext as AppApplication).retrofit
+    val application = (context.applicationContext as AppApplication)
 
-    val getCountryCodePrefixesUseCase = GetCountryCodePrefixesUseCaseImpl()
-    val getPhoneNumberResultsUseCase =
-      GetPhoneNumberResultsUseCaseImpl(retrofit.create(PhoneNumberService::class.java))
+    val moshi = application.moshi
+    val retrofit = application.retrofit
+    val phoneNumberService = retrofit.create(PhoneNumberService::class.java)
+
+    val getCountryCodePrefixesUseCase = GetCountryCodePrefixesUseCaseImpl(moshi)
+    val getPhoneNumberResultsUseCase = GetPhoneNumberResultsUseCaseImpl(phoneNumberService)
 
     return MainActivityViewModel(
       getCountryCodePrefixesUseCase,

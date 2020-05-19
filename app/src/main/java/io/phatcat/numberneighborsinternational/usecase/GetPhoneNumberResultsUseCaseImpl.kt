@@ -1,10 +1,9 @@
 package io.phatcat.numberneighborsinternational.usecase
 
 import io.phatcat.numberneighborsinternational.BuildConfig
+import io.phatcat.numberneighborsinternational.domain.entity.Country
 import io.phatcat.numberneighborsinternational.domain.entity.PhoneResultModel
 import io.phatcat.numberneighborsinternational.domain.usecase.GetPhoneNumberResultsUseCase
-import io.phatcat.numberneighborsinternational.network.model.Countries
-import io.phatcat.numberneighborsinternational.network.model.Country
 import io.phatcat.numberneighborsinternational.network.service.PhoneNumberService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
@@ -16,7 +15,7 @@ class GetPhoneNumberResultsUseCaseImpl(
 
   override suspend fun getPhoneNumbers(
     phoneNumber: String,
-    countries: Countries
+    countries: List<Country>
   ): List<PhoneResultModel> {
     return try {
       val results = mutableListOf<PhoneResultModel>()
@@ -46,8 +45,8 @@ class GetPhoneNumberResultsUseCaseImpl(
 
     return PhoneResultModel(
       success = result.valid,
-      countryName = country.country_name,
-      countryPrefix = country.dialling_code
+      countryName = country.countryName,
+      countryPrefix = country.countryCode
     )
   }
 
