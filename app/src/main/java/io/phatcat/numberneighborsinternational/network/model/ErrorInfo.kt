@@ -1,19 +1,16 @@
 package io.phatcat.numberneighborsinternational.network.model
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 
+@JsonClass(generateAdapter = true)
 data class ErrorInfo(
-  @SerializedName("error")
-  val error: Error,
-  @SerializedName("success")
-  val success: Boolean
+  @Json(name = "error") val error: Error,
+  @Json(name = "success") val success: Boolean
 ) {
   data class Error(
-    @SerializedName("code")
-    val code: Int,
-    @SerializedName("info")
-    val info: String?,
-    @SerializedName("type")
-    val type: String?
+    @Json(name = "code") val code: Int,
+    @Json(name = "info") val info: String?,
+    @Json(name = "type") val type: String?
   )
 }
