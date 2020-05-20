@@ -1,9 +1,21 @@
 <resources>
   <string name="app_name">Number Neighbors International</string>
 
-  <!--  Main Activity -->
+  <!-- Main Activity -->
   <string name="label_phone_number">Enter your phone number</string>
   <string name="search_button_text">Search</string>
   <string name="phone_number_hint">Phone Number</string>
+
+  <!-- Results Details  -->
+  <string name="error_result_title">Error!</string>
+  <string name="error_message">There was a problem getting number neighbors, try again later</string>
+
+  <string name="success_result_title">Success!</string>
+  <string name="success_message">Check out your results.</string>
+
+  <string name="failed_result_title">Sorry!</string>
+  <string name="failed_message">These countries didn\'t have a number neighbor. Better luck next time!</string>
+
+  <string name="result_dialog_positive_button">Done</string>
 
 </resources>

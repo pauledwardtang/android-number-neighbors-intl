@@ -1,5 +1,6 @@
 package io.phatcat.numberneighborsinternational.network.adapter
 
+import org.hamcrest.CoreMatchers
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -12,6 +13,6 @@ class CountriesAdapterTest {
   @Test
   fun fromJsonSmokeTest() {
     val countries = CountriesAdapter().fromJson(COUNTRIES)
-    assertTrue(countries?.size == 232)
+    assertThat(countries?.size, CoreMatchers.`is`(232))
   }
 }

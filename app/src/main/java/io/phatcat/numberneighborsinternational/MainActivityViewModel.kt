@@ -22,7 +22,6 @@ class MainActivityViewModel(
 
     // 3. Make API calls with numverify and build out the results
     return getPhoneNumberResultsUseCase.getPhoneNumbers(phoneNumber, randomCountries)
-
   }
 
   private fun getRandomCountries(countries: List<Country>, numCountries: Int): List<Country> {

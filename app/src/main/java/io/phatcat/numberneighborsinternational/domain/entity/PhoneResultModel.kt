@@ -1,7 +1,9 @@
 package io.phatcat.numberneighborsinternational.domain.entity
 
+import java.io.Serializable
+
 data class PhoneResultModel(
   val success: Boolean,
-  val countryPrefix: String,
-  val countryName: String
-)
+  val countryName: String,
+  val dialingCode: String
+) : Serializable

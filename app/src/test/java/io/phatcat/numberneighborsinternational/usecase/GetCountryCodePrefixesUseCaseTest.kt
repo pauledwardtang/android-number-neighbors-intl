@@ -6,7 +6,8 @@ import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import io.phatcat.numberneighborsinternational.domain.entity.Country
 import io.phatcat.numberneighborsinternational.network.adapter.CountriesAdapter
 import kotlinx.coroutines.runBlocking
-import org.junit.Assert.assertTrue
+import org.hamcrest.CoreMatchers
+import org.junit.Assert
 import org.junit.Test
 
 class GetCountryCodePrefixesUseCaseTest {
@@ -21,7 +22,8 @@ class GetCountryCodePrefixesUseCaseTest {
       .build()
 
     val countries = GetCountryCodePrefixesUseCaseImpl(moshi).getCountryCodePrefixes()
-    assertTrue(countries.size == 232)
+    Assert.assertThat(countries.size, CoreMatchers.`is`(232))
+
   }
 
 }

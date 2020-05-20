@@ -46,7 +46,7 @@ class GetPhoneNumberResultsUseCaseImpl(
     return PhoneResultModel(
       success = result.valid,
       countryName = country.countryName,
-      countryPrefix = country.countryCode
+      dialingCode = country.countryCode
     )
   }
 

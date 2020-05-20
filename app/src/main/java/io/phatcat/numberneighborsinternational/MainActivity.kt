@@ -8,6 +8,7 @@ import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.Snackbar
 import io.phatcat.numberneighborsinternational.databinding.ActivityMainBinding
 import io.phatcat.numberneighborsinternational.domain.entity.PhoneResultModel
+import io.phatcat.numberneighborsinternational.results.ResultsDialogFragment
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -58,7 +59,7 @@ class MainActivity : AppCompatActivity() {
   }
 
   private fun showResults(results: List<PhoneResultModel>) {
-    println(results.joinToString { "\n$it" })
+    ResultsDialogFragment.create(results).show(supportFragmentManager, null)
   }
 
 }
