@@ -1,6 +1,6 @@
 package io.phatcat.numberneighborsinternational.network.service
 
-import io.phatcat.numberneighborsinternational.domain.entity.Country
+import io.phatcat.numberneighborsinternational.entity.Country
 import retrofit2.http.GET
 import retrofit2.http.Query
 

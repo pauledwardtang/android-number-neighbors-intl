@@ -5,6 +5,7 @@
   <string name="label_phone_number">Enter your phone number</string>
   <string name="search_button_text">Search</string>
   <string name="phone_number_hint">Phone Number</string>
+  <string name="generic_verification_error">Error searching for your neighbors</string>
 
   <!-- Results Details  -->
   <string name="error_result_title">Error!</string>

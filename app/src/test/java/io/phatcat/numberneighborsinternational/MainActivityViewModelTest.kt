@@ -1,9 +1,11 @@
 package io.phatcat.numberneighborsinternational
 
-import io.phatcat.numberneighborsinternational.domain.entity.Country
-import io.phatcat.numberneighborsinternational.domain.entity.PhoneResultModel
-import io.phatcat.numberneighborsinternational.domain.usecase.GetCountriesUseCase
-import io.phatcat.numberneighborsinternational.domain.usecase.GetPhoneNumberResultsUseCase
+import io.phatcat.numberneighborsinternational.entity.Country
+import io.phatcat.numberneighborsinternational.entity.LineType.SPECIAL_SERVICES
+import io.phatcat.numberneighborsinternational.entity.Location
+import io.phatcat.numberneighborsinternational.entity.Phone
+import io.phatcat.numberneighborsinternational.usecase.GetCountriesUseCase
+import io.phatcat.numberneighborsinternational.usecase.GetPhoneNumberResultsUseCase
 import kotlinx.coroutines.runBlocking
 import org.hamcrest.CoreMatchers.`is`
 import org.junit.Assert.assertThat
@@ -44,8 +46,8 @@ class MainActivityViewModelTest {
       for (i in 0 until numResults) {
         results.add(
           Country(
+            name = "$i",
             countryCode = "$i",
-            countryName = "$i",
             dialingCode = "+$i"
           )
         )
@@ -56,13 +58,22 @@ class MainActivityViewModelTest {
 
   private suspend fun givenPhoneResults(numResults: Int) {
     `when`(getVerificationUseCase.getPhoneNumbers(any(), any())).then {
-      val results = mutableListOf<PhoneResultModel>()
+      val results = mutableListOf<Phone>()
       for (i in 0 until numResults) {
         results.add(
-          PhoneResultModel(
-            success = true,
-            countryName = "$i",
-            dialingCode = "+$i"
+          Phone(
+            valid = true,
+            phoneNumber = "0118 999 881 99 9119 7253",
+            carrier = null,
+            lineType = SPECIAL_SERVICES,
+            location = Location(
+              name = "${i}ville",
+              country = Country(
+                name = "Republic of $i",
+                countryCode = "$i",
+                dialingCode = "+$i"
+              )
+            )
           )
         )
       }

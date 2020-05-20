@@ -4,9 +4,9 @@ import android.app.Application
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import io.phatcat.numberneighborsinternational.domain.entity.Country
-import io.phatcat.numberneighborsinternational.domain.usecase.GetCountriesUseCase
-import io.phatcat.numberneighborsinternational.domain.usecase.GetPhoneNumberResultsUseCase
+import io.phatcat.numberneighborsinternational.entity.Country
+import io.phatcat.numberneighborsinternational.usecase.GetCountriesUseCase
+import io.phatcat.numberneighborsinternational.usecase.GetPhoneNumberResultsUseCase
 import io.phatcat.numberneighborsinternational.network.adapter.CountriesAdapter
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory

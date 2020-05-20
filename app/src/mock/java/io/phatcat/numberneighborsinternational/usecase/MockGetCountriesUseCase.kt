@@ -3,8 +3,7 @@ package io.phatcat.numberneighborsinternational.usecase
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
-import io.phatcat.numberneighborsinternational.domain.entity.Country
-import io.phatcat.numberneighborsinternational.domain.usecase.GetCountriesUseCase
+import io.phatcat.numberneighborsinternational.entity.Country
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -15,12 +14,16 @@ class MockGetCountriesUseCase(
   private val moshi: Moshi
 ) : GetCountriesUseCase {
 
+  private lateinit var countries: List<Country>
+
   override suspend fun getCountryCodePrefixes(): List<Country> {
-    // Keep this in memory instead of parsing every time :)
-    return withContext(Dispatchers.IO) {
-      val listType = Types.newParameterizedType(List::class.java, Country::class.java)
-      val adapter: JsonAdapter<List<Country>> = moshi.adapter(listType)
-      adapter.fromJson(COUNTRIES)!!
+    if (!this::countries.isInitialized) {
+      countries = withContext(Dispatchers.IO) {
+        val listType = Types.newParameterizedType(List::class.java, Country::class.java)
+        val adapter: JsonAdapter<List<Country>> = moshi.adapter(listType)
+        adapter.fromJson(COUNTRIES)!!
+      }
     }
+    return countries
   }
 }

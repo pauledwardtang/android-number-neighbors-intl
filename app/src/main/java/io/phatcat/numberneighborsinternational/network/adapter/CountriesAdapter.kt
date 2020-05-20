@@ -2,7 +2,7 @@ package io.phatcat.numberneighborsinternational.network.adapter
 
 import com.squareup.moshi.JsonDataException
 import com.squareup.moshi.JsonReader
-import io.phatcat.numberneighborsinternational.domain.entity.Country
+import io.phatcat.numberneighborsinternational.entity.Country
 
 /**
  * Parses country data from numverify country response. Manual parsing is necessary because the JSON
@@ -36,7 +36,13 @@ class CountriesAdapter : ReadOnlyJsonAdapter<List<Country>>() {
       }
 
       reader.endObject()
-      countries.add(Country(countryCode, countryName, dialingCode))
+      countries.add(
+        Country(
+          name = countryName,
+          countryCode = countryCode,
+          dialingCode = dialingCode
+        )
+      )
     }
     reader.endObject()
 

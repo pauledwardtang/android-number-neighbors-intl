@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import io.phatcat.numberneighborsinternational.R
 import io.phatcat.numberneighborsinternational.databinding.ResultItemBinding
-import io.phatcat.numberneighborsinternational.domain.entity.PhoneResultModel
 import io.phatcat.numberneighborsinternational.results.ResultsListAdapter.NeighborsViewHolder
 
 class ResultsListAdapter(

@@ -1,4 +1,4 @@
-package io.phatcat.numberneighborsinternational.domain.entity
+package io.phatcat.numberneighborsinternational.results
 
 import java.io.Serializable
 

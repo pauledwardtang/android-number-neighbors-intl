@@ -1,10 +1,10 @@
 package io.phatcat.numberneighborsinternational
 
 import androidx.lifecycle.ViewModel
-import io.phatcat.numberneighborsinternational.domain.entity.Country
-import io.phatcat.numberneighborsinternational.domain.entity.PhoneResultModel
-import io.phatcat.numberneighborsinternational.domain.usecase.GetCountriesUseCase
-import io.phatcat.numberneighborsinternational.domain.usecase.GetPhoneNumberResultsUseCase
+import io.phatcat.numberneighborsinternational.entity.Country
+import io.phatcat.numberneighborsinternational.results.PhoneResultModel
+import io.phatcat.numberneighborsinternational.usecase.GetCountriesUseCase
+import io.phatcat.numberneighborsinternational.usecase.GetPhoneNumberResultsUseCase
 
 private const val RANDOM_COUNTRIES_COUNT = 5
 
@@ -22,6 +22,13 @@ class MainActivityViewModel(
 
     // 3. Make API calls with numverify and build out the results
     return getPhoneNumberResultsUseCase.getPhoneNumbers(phoneNumber, randomCountries)
+      .map {
+        PhoneResultModel(
+          success = it.valid,
+          countryName = it.location.country.name,
+          dialingCode = it.location.country.dialingCode
+        )
+      }
   }
 
   private fun getRandomCountries(countries: List<Country>, numCountries: Int): List<Country> {

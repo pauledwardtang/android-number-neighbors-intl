@@ -1,8 +1,7 @@
 package io.phatcat.numberneighborsinternational.usecase
 
 import io.phatcat.numberneighborsinternational.BuildConfig
-import io.phatcat.numberneighborsinternational.domain.entity.Country
-import io.phatcat.numberneighborsinternational.domain.usecase.GetCountriesUseCase
+import io.phatcat.numberneighborsinternational.entity.Country
 import io.phatcat.numberneighborsinternational.network.service.CountriesService
 
 class GetCountriesUseCaseImpl(

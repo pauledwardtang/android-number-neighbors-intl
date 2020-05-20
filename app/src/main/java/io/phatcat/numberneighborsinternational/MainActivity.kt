@@ -3,11 +3,12 @@ package io.phatcat.numberneighborsinternational
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.Snackbar
 import io.phatcat.numberneighborsinternational.databinding.ActivityMainBinding
-import io.phatcat.numberneighborsinternational.domain.entity.PhoneResultModel
+import io.phatcat.numberneighborsinternational.results.PhoneResultModel
 import io.phatcat.numberneighborsinternational.results.ResultsDialogFragment
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -37,7 +38,7 @@ class MainActivity : AppCompatActivity() {
   }
 
   private fun onSearchClicked(phoneNumber: String) {
-    binding.searchButton.isEnabled = false
+    onLoading(true)
     lifecycleScope.launch(Dispatchers.Main) {
 
       try {
@@ -46,10 +47,10 @@ class MainActivity : AppCompatActivity() {
 
       } catch (e: Exception) {
         e.printStackTrace()
-        showSearchErrorMessage("Error searching for your neighbors")
+        showSearchErrorMessage(getString(R.string.generic_verification_error))
 
       } finally {
-        binding.searchButton.isEnabled = true
+        onLoading(false)
       }
     }
   }
@@ -60,6 +61,11 @@ class MainActivity : AppCompatActivity() {
 
   private fun showResults(results: List<PhoneResultModel>) {
     ResultsDialogFragment.create(results).show(supportFragmentManager, null)
+  }
+
+  private fun onLoading(isLoading: Boolean) {
+    binding.searchButton.isEnabled = !isLoading
+    binding.progressBar.isVisible = isLoading
   }
 
 }

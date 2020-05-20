@@ -1,2 +1,3 @@
 rootProject.name='Number Neighbors International'
 include ':app'
+include ':domain'

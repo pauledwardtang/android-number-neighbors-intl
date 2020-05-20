@@ -7,7 +7,6 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
 import io.phatcat.numberneighborsinternational.R
 import io.phatcat.numberneighborsinternational.databinding.FragmentResultsDialogBinding
-import io.phatcat.numberneighborsinternational.domain.entity.PhoneResultModel
 
 private const val ARG_RESULTS = "results"
 

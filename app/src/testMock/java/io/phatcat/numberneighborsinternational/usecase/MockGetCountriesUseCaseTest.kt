@@ -3,7 +3,7 @@ package io.phatcat.numberneighborsinternational.usecase
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import io.phatcat.numberneighborsinternational.domain.entity.Country
+import io.phatcat.numberneighborsinternational.entity.Country
 import io.phatcat.numberneighborsinternational.network.adapter.CountriesAdapter
 import kotlinx.coroutines.runBlocking
 import org.hamcrest.CoreMatchers
