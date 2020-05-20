@@ -29,6 +29,20 @@ android {
     }
   }
 
+  flavorDimensions "version"
+  productFlavors {
+    mock {
+      dimension "version"
+      applicationIdSuffix ".mock"
+      versionNameSuffix "-mock"
+    }
+
+    prod {
+      dimension "version"
+    }
+
+  }
+
   compileOptions {
     sourceCompatibility = JavaVersion.VERSION_1_8
     targetCompatibility = JavaVersion.VERSION_1_8
@@ -70,7 +84,7 @@ dependencies {
   debugImplementation "com.squareup.leakcanary:leakcanary-android:$leakCanaryVersion"
 
   // Testing
-  testImplementation 'junit:junit:4.12'
+  testImplementation 'junit:junit:4.13'
   testImplementation 'androidx.test:core:1.2.0' // Robolectric
   testImplementation 'org.mockito:mockito-core:3.3.3'
   androidTestImplementation 'androidx.test.ext:junit:1.1.1'

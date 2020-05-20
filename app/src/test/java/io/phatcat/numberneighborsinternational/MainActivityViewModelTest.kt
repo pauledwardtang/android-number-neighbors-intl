@@ -2,7 +2,7 @@ package io.phatcat.numberneighborsinternational
 
 import io.phatcat.numberneighborsinternational.domain.entity.Country
 import io.phatcat.numberneighborsinternational.domain.entity.PhoneResultModel
-import io.phatcat.numberneighborsinternational.domain.usecase.GetCountryCodePrefixesUseCase
+import io.phatcat.numberneighborsinternational.domain.usecase.GetCountriesUseCase
 import io.phatcat.numberneighborsinternational.domain.usecase.GetPhoneNumberResultsUseCase
 import kotlinx.coroutines.runBlocking
 import org.hamcrest.CoreMatchers.`is`
@@ -19,7 +19,7 @@ import org.mockito.junit.MockitoTestRule
 class MainActivityViewModelTest {
   @get:Rule val rule: MockitoTestRule = MockitoJUnit.testRule(this)
 
-  @Mock lateinit var getCountriesUseCase: GetCountryCodePrefixesUseCase
+  @Mock lateinit var getCountriesUseCase: GetCountriesUseCase
   @Mock lateinit var getVerificationUseCase: GetPhoneNumberResultsUseCase
 
   @InjectMocks lateinit var viewModel: MainActivityViewModel

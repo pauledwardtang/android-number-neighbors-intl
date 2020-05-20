@@ -10,7 +10,7 @@ import org.hamcrest.CoreMatchers
 import org.junit.Assert
 import org.junit.Test
 
-class GetCountryCodePrefixesUseCaseTest {
+class MockGetCountriesUseCaseTest {
 
   @Test
   fun parsesCountriesFromMoshi() = runBlocking {
@@ -21,7 +21,7 @@ class GetCountryCodePrefixesUseCaseTest {
       .add(listType, CountriesAdapter())
       .build()
 
-    val countries = GetCountryCodePrefixesUseCaseImpl(moshi).getCountryCodePrefixes()
+    val countries = MockGetCountriesUseCase(moshi).getCountryCodePrefixes()
     Assert.assertThat(countries.size, CoreMatchers.`is`(232))
 
   }

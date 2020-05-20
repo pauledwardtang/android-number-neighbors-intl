@@ -3,19 +3,19 @@ package io.phatcat.numberneighborsinternational
 import androidx.lifecycle.ViewModel
 import io.phatcat.numberneighborsinternational.domain.entity.Country
 import io.phatcat.numberneighborsinternational.domain.entity.PhoneResultModel
-import io.phatcat.numberneighborsinternational.domain.usecase.GetCountryCodePrefixesUseCase
+import io.phatcat.numberneighborsinternational.domain.usecase.GetCountriesUseCase
 import io.phatcat.numberneighborsinternational.domain.usecase.GetPhoneNumberResultsUseCase
 
 private const val RANDOM_COUNTRIES_COUNT = 5
 
 class MainActivityViewModel(
-  private val getCountryCodePrefixesUseCase: GetCountryCodePrefixesUseCase,
+  private val getCountriesUseCase: GetCountriesUseCase,
   private val getPhoneNumberResultsUseCase: GetPhoneNumberResultsUseCase
 ) : ViewModel() {
 
   suspend fun searchClicked(phoneNumber: String): List<PhoneResultModel> {
     // 1. Get and cache list of country code prefixes
-    val countries = getCountryCodePrefixesUseCase.getCountryCodePrefixes()
+    val countries = getCountriesUseCase.getCountryCodePrefixes()
 
     // 2. Get random country prefixes
     val randomCountries = getRandomCountries(countries, RANDOM_COUNTRIES_COUNT)
