@@ -8,8 +8,9 @@ class MainActivityViewModelFactory(private val context: Context) : ViewModelProv
   override fun <T : ViewModel?> create(modelClass: Class<T>): T {
     require(modelClass.isAssignableFrom(MainActivityViewModel::class.java))
 
-    val application = (context.applicationContext as BaseApplication)
+    val application = (context.applicationContext as AppApplication)
 
+    @Suppress("UNCHECKED_CAST")
     return MainActivityViewModel(
       application.getCountriesUseCase,
       application.getPhoneNumberResultsUseCase
