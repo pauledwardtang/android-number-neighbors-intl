@@ -8,7 +8,7 @@ import io.phatcat.numberneighborsinternational.entity.Country
  * Parses country data from numverify country response. Manual parsing is necessary because the JSON
  * structure doesn't contain an array of objects, but instead a variable series of named objects.
  */
-class CountriesAdapter : ReadOnlyJsonAdapter<List<Country>>() {
+internal class CountriesAdapter : ReadOnlyJsonAdapter<List<Country>>() {
 
   private val options: JsonReader.Options = JsonReader.Options.of("country_name", "dialling_code")
 

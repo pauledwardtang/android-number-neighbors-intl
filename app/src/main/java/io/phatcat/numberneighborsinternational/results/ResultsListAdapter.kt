@@ -7,7 +7,7 @@ import io.phatcat.numberneighborsinternational.R
 import io.phatcat.numberneighborsinternational.databinding.ResultItemBinding
 import io.phatcat.numberneighborsinternational.results.ResultsListAdapter.NeighborsViewHolder
 
-class ResultsListAdapter(
+internal class ResultsListAdapter(
   private val results: List<PhoneResultModel>
 ) : RecyclerView.Adapter<NeighborsViewHolder>() {
 

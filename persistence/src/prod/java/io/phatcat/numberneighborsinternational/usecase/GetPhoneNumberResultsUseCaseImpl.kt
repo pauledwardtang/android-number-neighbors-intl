@@ -10,7 +10,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 
-class GetPhoneNumberResultsUseCaseImpl(
+internal class GetPhoneNumberResultsUseCaseImpl(
   private val phoneNumberService: PhoneNumberService
 ) : GetPhoneNumberResultsUseCase {
 
@@ -37,7 +37,7 @@ class GetPhoneNumberResultsUseCaseImpl(
 
   }
 
-  private suspend fun getResult(phoneNumber: String, country: Country): Phone {
+  private fun getResult(phoneNumber: String, country: Country): Phone {
     val result = phoneNumberService.validatePhoneNumber(
       countryCode = country.countryCode,
       phoneNumber = phoneNumber,

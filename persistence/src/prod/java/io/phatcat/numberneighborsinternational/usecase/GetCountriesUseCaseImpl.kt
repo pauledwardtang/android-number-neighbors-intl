@@ -4,7 +4,7 @@ import io.phatcat.numberneighborsinternational.BuildConfig
 import io.phatcat.numberneighborsinternational.entity.Country
 import io.phatcat.numberneighborsinternational.network.service.CountriesService
 
-class GetCountriesUseCaseImpl(
+internal class GetCountriesUseCaseImpl(
   private val countriesService: CountriesService
 ) : GetCountriesUseCase {
 
