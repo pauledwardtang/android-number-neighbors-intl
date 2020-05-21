@@ -60,6 +60,8 @@ class MainActivity : AppCompatActivity() {
   }
 
   private fun showResults(results: List<PhoneResultModel>) {
+    // Alternatively, the dialog or a Fragment can handle loading states and communicate exclusively
+    // with the VM while this class simply validates the phone number or just fetches countries
     ResultsDialogFragment.create(results).show(supportFragmentManager, null)
   }
 
