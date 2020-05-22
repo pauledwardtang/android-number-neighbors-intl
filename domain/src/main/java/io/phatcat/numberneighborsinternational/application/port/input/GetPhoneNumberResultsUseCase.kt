@@ -1,4 +1,4 @@
-package io.phatcat.numberneighborsinternational.usecase
+package io.phatcat.numberneighborsinternational.application.port.input
 
 import io.phatcat.numberneighborsinternational.entity.Country
 import io.phatcat.numberneighborsinternational.entity.Phone

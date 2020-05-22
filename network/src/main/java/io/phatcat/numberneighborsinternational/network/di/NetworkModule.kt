@@ -1,37 +1,36 @@
-package io.phatcat.numberneighborsinternational.network
+package io.phatcat.numberneighborsinternational.network.di
 
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import dagger.Module
+import dagger.Provides
 import io.phatcat.numberneighborsinternational.entity.Country
 import io.phatcat.numberneighborsinternational.network.adapter.CountriesAdapter
-import io.phatcat.numberneighborsinternational.application.port.input.GetCountriesUseCase
-import io.phatcat.numberneighborsinternational.application.port.input.GetPhoneNumberResultsUseCase
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
 // Note that HTTPS is available only for paid subscriptions
 private const val BASE_URL = "http://apilayer.net/api/"
 
-// This can be replaced with Dagger 🗡
-abstract class AbstractUseCaseFactory {
-  protected val retrofit: Retrofit
-  protected val moshi: Moshi
+@Module(includes = [DataSourceModule::class])
+object NetworkModule {
 
-  abstract val getCountriesUseCase: GetCountriesUseCase
-  abstract val getPhoneNumberResultsUseCase: GetPhoneNumberResultsUseCase
-
-  init {
+  @Provides
+  fun providesMoshi(): Moshi {
     val listType = Types.newParameterizedType(List::class.java, Country::class.java)
-    moshi = Moshi.Builder()
+    return Moshi.Builder()
       .add(KotlinJsonAdapterFactory())
       .add(
         listType,
         CountriesAdapter()
       )
       .build()
+  }
 
-    retrofit = Retrofit.Builder()
+  @Provides
+  fun providesRetrofit(moshi: Moshi): Retrofit {
+    return Retrofit.Builder()
       .baseUrl(BASE_URL)
       .addConverterFactory(MoshiConverterFactory.create(moshi))
       .build()

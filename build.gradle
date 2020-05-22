@@ -38,6 +38,12 @@ allprojects {
 
     // LeakCanary
     leakCanaryVersion = '2.3'
+
+    // Dagger
+    daggerVersion = '2.27'
+
+    // Coroutines
+    kotlinxCoroutinesVersion = '1.3.7'
   }
 
 

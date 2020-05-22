@@ -5,22 +5,14 @@ apply plugin: 'kotlin-kapt'
 dependencies {
   implementation fileTree(dir: 'libs', include: ['*.jar'])
 
+  implementation project(":domain")
+
   // Kotlin
   implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-  implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinxCoroutinesVersion"
 
   // Dagger
   implementation "com.google.dagger:dagger:$daggerVersion"
   kapt "com.google.dagger:dagger-compiler:$daggerVersion"
-}
-
-compileKotlin {
-  kotlinOptions {
-    freeCompilerArgs = [
-        "-XXLanguage:+InlineClasses",
-        "-Xopt-in=kotlin.RequiresOptIn"
-    ]
-  }
 }
 
 sourceCompatibility = "8"

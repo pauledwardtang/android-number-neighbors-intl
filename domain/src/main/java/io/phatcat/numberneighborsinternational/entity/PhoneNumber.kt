@@ -1,7 +1,6 @@
 package io.phatcat.numberneighborsinternational.entity
 
-data class PhoneNumber(
-  val number: String,
-  val localNumber: String,
-  val fullNumber: String
-)
+/**
+ * @param number Phone number with international code
+ */
+inline class PhoneNumber(val number: String)

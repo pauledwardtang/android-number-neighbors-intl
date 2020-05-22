@@ -4,8 +4,8 @@ import io.phatcat.numberneighborsinternational.entity.Country
 import io.phatcat.numberneighborsinternational.entity.LineType.SPECIAL_SERVICES
 import io.phatcat.numberneighborsinternational.entity.Location
 import io.phatcat.numberneighborsinternational.entity.Phone
-import io.phatcat.numberneighborsinternational.usecase.GetCountriesUseCase
-import io.phatcat.numberneighborsinternational.usecase.GetPhoneNumberResultsUseCase
+import io.phatcat.numberneighborsinternational.application.port.input.GetCountriesUseCase
+import io.phatcat.numberneighborsinternational.application.port.input.GetPhoneNumberResultsUseCase
 import kotlinx.coroutines.runBlocking
 import org.hamcrest.CoreMatchers.`is`
 import org.junit.Assert.assertThat

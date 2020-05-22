@@ -3,8 +3,8 @@ package io.phatcat.numberneighborsinternational
 import androidx.lifecycle.ViewModel
 import io.phatcat.numberneighborsinternational.entity.Country
 import io.phatcat.numberneighborsinternational.results.PhoneResultModel
-import io.phatcat.numberneighborsinternational.usecase.GetCountriesUseCase
-import io.phatcat.numberneighborsinternational.usecase.GetPhoneNumberResultsUseCase
+import io.phatcat.numberneighborsinternational.application.port.input.GetCountriesUseCase
+import io.phatcat.numberneighborsinternational.application.port.input.GetPhoneNumberResultsUseCase
 
 private const val RANDOM_COUNTRIES_COUNT = 5
 

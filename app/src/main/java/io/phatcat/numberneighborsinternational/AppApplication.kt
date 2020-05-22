@@ -1,8 +1,9 @@
 package io.phatcat.numberneighborsinternational
 
 import android.app.Application
-import io.phatcat.numberneighborsinternational.usecase.GetCountriesUseCase
-import io.phatcat.numberneighborsinternational.usecase.GetPhoneNumberResultsUseCase
+import io.phatcat.numberneighborsinternational.application.port.input.GetCountriesUseCase
+import io.phatcat.numberneighborsinternational.application.port.input.GetPhoneNumberResultsUseCase
+import io.phatcat.numberneighborsinternational.network.di.DaggerApplicationComponent
 
 class AppApplication : Application() {
 
@@ -11,9 +12,10 @@ class AppApplication : Application() {
 
   override fun onCreate() {
     super.onCreate()
-    val factory = UseCaseFactory()
-    getCountriesUseCase = factory.getCountriesUseCase
-    getPhoneNumberResultsUseCase = factory.getPhoneNumberResultsUseCase
+
+    val component = DaggerApplicationComponent.create()
+    getCountriesUseCase = component.getCountriesUseCase
+    getPhoneNumberResultsUseCase = component.getPhoneNumberResultsUseCase
   }
 
 }
