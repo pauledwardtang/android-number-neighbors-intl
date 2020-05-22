@@ -24,16 +24,7 @@ android {
     }
   }
 
-  flavorDimensions "version"
-  productFlavors {
-    mock {
-      dimension "version"
-    }
-
-    prod {
-      dimension "version"
-    }
-  }
+  testOptions.unitTests.includeAndroidResources = true
 }
 
 dependencies {
@@ -44,7 +35,6 @@ dependencies {
 
   implementation 'androidx.appcompat:appcompat:1.1.0'
   implementation 'androidx.core:core-ktx:1.2.0'
-  testImplementation 'junit:junit:4.13'
   androidTestImplementation 'androidx.test.ext:junit:1.1.1'
   androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
@@ -52,12 +42,20 @@ dependencies {
   implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
   implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinxCoroutinesVersion"
 
-  // Moshi
-  mockImplementation "com.squareup.moshi:moshi:$moshiVersion"
-  mockImplementation "com.squareup.moshi:moshi-kotlin:$moshiVersion"
-  kaptMock "com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion"
+  // Room
+  implementation "androidx.room:room-runtime:$roomVersion"
+  implementation "androidx.room:room-rxjava2:$roomVersion"
+  kapt "androidx.room:room-compiler:$roomVersion"
+  androidTestImplementation "androidx.room:room-testing:$roomVersion"
 
   // Dagger
   implementation "com.google.dagger:dagger:$daggerVersion"
   kapt "com.google.dagger:dagger-compiler:$daggerVersion"
+
+  // Testing
+  testImplementation "junit:junit:$junitVersion"
+  testImplementation 'androidx.test:core:1.2.0'
+  testImplementation "org.robolectric:robolectric:$robolectricVersion"
+  testImplementation "androidx.arch.core:core-testing:$archCoreVersion"
+
 }

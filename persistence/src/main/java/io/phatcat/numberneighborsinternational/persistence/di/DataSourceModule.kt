@@ -6,9 +6,9 @@ import io.phatcat.numberneighborsinternational.countries.data.LocalDataSource
 import io.phatcat.numberneighborsinternational.persistence.datasource.CountriesLocalDataSource
 
 @Module
-abstract class DataSourceModule {
+internal abstract class DataSourceModule {
   @Binds
-  internal abstract fun bindsCountriesLocalDataSource(
+  abstract fun bindsCountriesLocalDataSource(
     countriesLocalDataSource: CountriesLocalDataSource
   ): LocalDataSource
 

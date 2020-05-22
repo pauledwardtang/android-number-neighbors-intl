@@ -7,7 +7,7 @@ import io.phatcat.numberneighborsinternational.entity.PhoneNumber
 import io.phatcat.numberneighborsinternational.phoneverification.data.RemoteDataSource
 import javax.inject.Inject
 
-class PhoneVerificationRepository @Inject constructor(
+internal class PhoneVerificationRepository @Inject constructor(
   private val remoteDataSource: RemoteDataSource
 ) : GetPhoneNumberVerificationPort {
   override suspend fun getPhoneVerification(phoneNumber: PhoneNumber, country: Country): Phone {

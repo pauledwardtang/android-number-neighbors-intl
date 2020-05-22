@@ -9,7 +9,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class CountriesRepository @Inject constructor(
+internal class CountriesRepository @Inject constructor(
   private val localDataSource: LocalDataSource,
   private val remoteDataSource: RemoteDataSource
 ) :
@@ -26,7 +26,7 @@ class CountriesRepository @Inject constructor(
   }
 
   override suspend fun storeCountries(countries: List<Country>) {
-    var shouldStore = false
+    var shouldStore = true
     if (localDataSource.hasCountries()) {
       shouldStore = localDataSource.getCountries() != countries
     }

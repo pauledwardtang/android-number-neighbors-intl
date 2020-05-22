@@ -13,7 +13,7 @@ class AppApplication : Application() {
   override fun onCreate() {
     super.onCreate()
 
-    val component = DaggerApplicationComponent.create()
+    val component = DaggerApplicationComponent.factory().create(this)
     getCountriesUseCase = component.getCountriesUseCase
     getPhoneNumberResultsUseCase = component.getPhoneNumberResultsUseCase
   }

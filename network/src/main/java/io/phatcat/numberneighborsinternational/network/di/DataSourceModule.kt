@@ -13,29 +13,29 @@ typealias CountriesRemoteSource = io.phatcat.numberneighborsinternational.countr
 typealias PhoneVerificationRemoteSource = io.phatcat.numberneighborsinternational.phoneverification.data.RemoteDataSource
 
 @Module
-abstract class DataSourceModule {
+internal abstract class DataSourceModule {
 
   companion object {
     @Provides
     @JvmStatic
-    internal fun providesCountriesService(retrofit: Retrofit): CountriesService {
+    fun providesCountriesService(retrofit: Retrofit): CountriesService {
       return retrofit.create(CountriesService::class.java)
     }
 
     @Provides
     @JvmStatic
-    internal fun providesPhoneNumberService(retrofit: Retrofit): PhoneNumberService {
+    fun providesPhoneNumberService(retrofit: Retrofit): PhoneNumberService {
       return retrofit.create(PhoneNumberService::class.java)
     }
   }
 
   @Binds
-  internal abstract fun countriesRemoteDataSource(
+  abstract fun countriesRemoteDataSource(
     countriesRemoteDataSource: CountriesRemoteDataSource
   ): CountriesRemoteSource
 
   @Binds
-  internal abstract fun phoneVerificationRemoteDataSource(
+  abstract fun phoneVerificationRemoteDataSource(
     phoneVerificationResultDataSource: PhoneVerificationResultDataSource
   ): PhoneVerificationRemoteSource
 

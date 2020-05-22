@@ -9,15 +9,15 @@ import io.phatcat.numberneighborsinternational.countries.CountriesRepository
 import io.phatcat.numberneighborsinternational.phoneverification.PhoneVerificationRepository
 
 @Module
-interface DataModule {
+abstract class DataModule {
 
   @Binds
-  fun storeCountriesPort(countriesRepository: CountriesRepository): StoreCountriesPort
+  internal abstract fun storeCountriesPort(countriesRepository: CountriesRepository): StoreCountriesPort
 
   @Binds
-  fun getCountryPort(countriesRepository: CountriesRepository): GetCountriesPort
+  internal abstract fun getCountryPort(countriesRepository: CountriesRepository): GetCountriesPort
 
   @Binds
-  fun getPhoneNumberVerificationPort(phoneVerificationRepository: PhoneVerificationRepository): GetPhoneNumberVerificationPort
+  internal abstract fun getPhoneNumberVerificationPort(phoneVerificationRepository: PhoneVerificationRepository): GetPhoneNumberVerificationPort
 
 }

@@ -1,5 +1,7 @@
 package io.phatcat.numberneighborsinternational.network.di
 
+import android.content.Context
+import dagger.BindsInstance
 import dagger.Component
 import io.phatcat.numberneighborsinternational.application.port.input.GetCountriesUseCase
 import io.phatcat.numberneighborsinternational.application.port.input.GetPhoneNumberResultsUseCase
@@ -24,5 +26,10 @@ interface ApplicationComponent {
   // Next step is to inject these use cases directly to the classes that need them
   val getCountriesUseCase: GetCountriesUseCase
   val getPhoneNumberResultsUseCase: GetPhoneNumberResultsUseCase
+
+  @Component.Factory
+  interface Factory {
+    fun create(@BindsInstance context: Context): ApplicationComponent
+  }
 
 }

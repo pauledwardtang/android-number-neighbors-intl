@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity() {
   }
 
   private fun showSearchErrorMessage(message: String) {
-    Snackbar.make(binding.root, message, Snackbar.LENGTH_LONG)
+    Snackbar.make(binding.root, message, Snackbar.LENGTH_LONG).show()
   }
 
   private fun showResults(results: List<PhoneResultModel>) {

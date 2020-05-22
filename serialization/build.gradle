@@ -20,7 +20,7 @@ dependencies {
   kapt "com.google.dagger:dagger-compiler:$daggerVersion"
 
   // Testing
-  testImplementation 'junit:junit:4.13'
+  testImplementation "junit:junit:$junitVersion"
 
 }
 
