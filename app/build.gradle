@@ -54,7 +54,9 @@ dependencies {
 
   implementation project(":domain")
   implementation project(":data")
-  implementation project(':network')
+  implementation project(":network")
+  implementation project(":persistence")
+  implementation project(":serialization")
 
   implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
   implementation 'androidx.appcompat:appcompat:1.1.0'
@@ -78,6 +80,12 @@ dependencies {
   // https://github.com/google/dagger/issues/970
   implementation "com.squareup.moshi:moshi:$moshiVersion"
   implementation "com.squareup.moshi:moshi-kotlin:$moshiVersion"
+
+  // Retrofit
+  // Unfortunately, this project is a victim of this issue:
+  // https://github.com/google/dagger/issues/970
+  implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+  implementation "com.squareup.retrofit2:converter-moshi:$retrofitMoshiConverterVersion"
 
   // Dagger
   implementation "com.google.dagger:dagger:$daggerVersion"

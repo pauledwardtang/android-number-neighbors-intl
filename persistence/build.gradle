@@ -18,14 +18,9 @@ android {
   }
 
   buildTypes {
-    debug {
-      buildConfigField("String", "NUMVERIFY_API_KEY", "\"YOUR_API_KEY\"")
-    }
-
     release {
       minifyEnabled false
       proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-      buildConfigField("String", "NUMVERIFY_API_KEY", "\"YOUR_API_KEY\"")
     }
   }
 
@@ -39,7 +34,6 @@ android {
       dimension "version"
     }
   }
-
 }
 
 dependencies {
@@ -50,6 +44,7 @@ dependencies {
 
   implementation 'androidx.appcompat:appcompat:1.1.0'
   implementation 'androidx.core:core-ktx:1.2.0'
+  testImplementation 'junit:junit:4.13'
   androidTestImplementation 'androidx.test.ext:junit:1.1.1'
   androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
@@ -58,22 +53,11 @@ dependencies {
   implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinxCoroutinesVersion"
 
   // Moshi
-  implementation "com.squareup.moshi:moshi:$moshiVersion"
-  implementation "com.squareup.moshi:moshi-kotlin:$moshiVersion"
-  kapt "com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion"
-
-  // Retrofit
-  implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
-  implementation "com.squareup.retrofit2:converter-moshi:$retrofitMoshiConverterVersion"
+  mockImplementation "com.squareup.moshi:moshi:$moshiVersion"
+  mockImplementation "com.squareup.moshi:moshi-kotlin:$moshiVersion"
+  kaptMock "com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion"
 
   // Dagger
   implementation "com.google.dagger:dagger:$daggerVersion"
   kapt "com.google.dagger:dagger-compiler:$daggerVersion"
-
-  // Testing
-  testImplementation 'junit:junit:4.13'
-  testImplementation 'androidx.test:core:1.2.0' // Robolectric
-  testImplementation 'org.mockito:mockito-core:3.3.3'
-  androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-  androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }
