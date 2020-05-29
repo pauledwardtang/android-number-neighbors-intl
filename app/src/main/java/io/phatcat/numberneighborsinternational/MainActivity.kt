@@ -2,26 +2,27 @@ package io.phatcat.numberneighborsinternational
 
 import android.os.Bundle
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.Snackbar
+import dagger.android.support.DaggerAppCompatActivity
 import io.phatcat.numberneighborsinternational.databinding.ActivityMainBinding
 import io.phatcat.numberneighborsinternational.results.PhoneResultModel
 import io.phatcat.numberneighborsinternational.results.ResultsDialogFragment
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : DaggerAppCompatActivity() {
+
+  @Inject lateinit var factory: MainActivityViewModelFactory
 
   private var _binding: ActivityMainBinding? = null
   private val binding get() = requireNotNull(_binding)
 
-  private val viewModel by viewModels<MainActivityViewModel> {
-    MainActivityViewModelFactory(application)
-  }
+  private val viewModel by viewModels<MainActivityViewModel> { factory }
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)

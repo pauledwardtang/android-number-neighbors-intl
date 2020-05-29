@@ -1,19 +1,17 @@
 package io.phatcat.numberneighborsinternational
 
-import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import javax.inject.Inject
 
-class MainActivityViewModelFactory(private val context: Context) : ViewModelProvider.Factory {
+// This is ok for now, but won't scale with a large amount of ViewModels
+class MainActivityViewModelFactory @Inject constructor(
+  private val viewModel: MainActivityViewModel
+) : ViewModelProvider.Factory {
+
   override fun <T : ViewModel?> create(modelClass: Class<T>): T {
     require(modelClass.isAssignableFrom(MainActivityViewModel::class.java))
-
-    val application = (context.applicationContext as AppApplication)
-
     @Suppress("UNCHECKED_CAST")
-    return MainActivityViewModel(
-      application.getCountriesUseCase,
-      application.getPhoneNumberResultsUseCase
-    ) as T
+    return viewModel as T
   }
 }
