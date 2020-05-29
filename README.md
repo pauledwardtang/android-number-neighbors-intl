@@ -1,10 +1,14 @@
 # Number Neighbors International
 
 ## Description
-This is a simple demo app showcasing the [numverify API](https://numverify.com/documentation) to find number neighbors across different countries. It selects 5 countries at random and verifies a given phone number against the numverify API and displays the results. No more no less.
+This is a demo app showcasing the `numverify` [API](https://numverify.com/documentation) to find number neighbors across different countries. It selects 5 countries at random and verifies a given phone number against the numverify API and displays the results.
+
+Fetched country results are stored in a Room database.
+
+This project uses MVVM, Dagger, & clean architecture principles.
 
 ## Usage
-Use mockDebug/mockRelease to test with mock data instead of consuming API quota.
+Use mockDebug/mockRelease to test with mock data instead of consuming `numverify` API quota.
 
 For the prod variant, add your API key in build.gradle (or better yet, from your environment or elsewhere).
 
